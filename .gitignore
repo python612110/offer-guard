@@ -17,6 +17,5 @@ backend/.mt-*/
 **/__pycache__/
 **/.pytest_cache/
 deployment/.env
-.trae/offerguard-deploy*
-.trae/github-auth/
+.trae/
 .workbuddy/
