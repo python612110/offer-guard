@@ -1,0 +1,32 @@
+{
+  "name": "offerguard-web",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "test:ui": "playwright test",
+    "dev": "vite --host 127.0.0.1",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview --host 127.0.0.1",
+    "format": "prettier --write \"src/**/*.{ts,tsx,css}\" \"*.{json,ts,html}\""
+  },
+  "dependencies": {
+    "idb": "^8.0.3",
+    "jspdf": "^4.2.1",
+    "lucide-react": "^0.468.0",
+    "mammoth": "^1.11.0",
+    "pdfjs-dist": "^4.10.38",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-router-dom": "^7.6.2"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.65.1",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@vitejs/plugin-react": "^4.5.0",
+    "prettier": "^3.8.0",
+    "typescript": "~5.8.3",
+    "vite": "^6.3.5"
+  }
+}

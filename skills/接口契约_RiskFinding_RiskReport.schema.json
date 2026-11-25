@@ -1,0 +1,161 @@
+{
+  "RiskFinding": {
+    "type": "object",
+    "required": [
+      "risk_id",
+      "skill_id",
+      "risk_type",
+      "risk_level",
+      "title",
+      "evidence",
+      "triggered_rule",
+      "explanation",
+      "suggestion",
+      "student_tip",
+      "knowledge_evidence",
+      "confidence",
+      "status",
+      "missing_information"
+    ],
+    "properties": {
+      "risk_id": {
+        "type": "string"
+      },
+      "skill_id": {
+        "type": "string"
+      },
+      "risk_type": {
+        "type": "string"
+      },
+      "risk_level": {
+        "enum": [
+          "高",
+          "中",
+          "低",
+          "待核实"
+        ]
+      },
+      "title": {
+        "type": "string"
+      },
+      "evidence": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "required": [
+            "clause_id",
+            "original_text",
+            "page",
+            "section_path"
+          ],
+          "properties": {
+            "clause_id": {
+              "type": "string"
+            },
+            "original_text": {
+              "type": "string"
+            },
+            "page": {
+              "type": [
+                "integer",
+                "null"
+              ]
+            },
+            "section_path": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          }
+        }
+      },
+      "triggered_rule": {
+        "type": "string"
+      },
+      "explanation": {
+        "type": "string"
+      },
+      "suggestion": {
+        "type": "string"
+      },
+      "student_tip": {
+        "type": "string"
+      },
+      "knowledge_evidence": {
+        "type": "array",
+        "items": {
+          "type": "object"
+        }
+      },
+      "confidence": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 1
+      },
+      "status": {
+        "enum": [
+          "已确认",
+          "待核实",
+          "未命中"
+        ]
+      },
+      "missing_information": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "RiskReport": {
+    "type": "object",
+    "required": [
+      "document_id",
+      "document_type",
+      "summary",
+      "findings",
+      "review_notes"
+    ],
+    "properties": {
+      "document_id": {
+        "type": "string"
+      },
+      "document_type": {
+        "type": "string"
+      },
+      "summary": {
+        "type": "object",
+        "properties": {
+          "total_findings": {
+            "type": "integer"
+          },
+          "high": {
+            "type": "integer"
+          },
+          "medium": {
+            "type": "integer"
+          },
+          "low": {
+            "type": "integer"
+          },
+          "pending": {
+            "type": "integer"
+          }
+        }
+      },
+      "findings": {
+        "type": "array",
+        "items": {
+          "$ref": "#/RiskFinding"
+        }
+      },
+      "review_notes": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
