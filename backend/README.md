@@ -15,7 +15,7 @@ python3 -m venv .venv
 .venv/bin/uvicorn app.main:app --reload --host 127.0.0.1 --port 8000
 ```
 
-本工作区已安装 `.venv` 依赖，直接运行配置脚本即可。配置脚本会在终端隐藏输入 MySQL 管理密码，创建 `offerguard` 库、随机专用本机用户、权限为 600 的 `.env`，并执行迁移；不会覆盖已有 `.env`，不会修改其他数据库。不要把数据库密码发到聊天或提交 Git。
+配置脚本会在终端隐藏输入 MySQL 管理密码，创建 `offerguard` 库、随机专用本机用户、权限为 600 的 `.env`，并执行迁移；不会覆盖已有 `.env`，不会修改其他数据库。不要把数据库密码发到聊天或提交 Git。
 
 也可自行将 `.env.example` 复制为 `.env`，填写已有数据库账号后运行：
 

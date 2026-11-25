@@ -15,7 +15,7 @@ npm run dev
 
 ## 当前功能边界
 
-- 本设备模式使用原 IndexedDB；账号模式通过 FastAPI 将记录保存至 MySQL、原文件保存至服务器私有目录。两种模式分别保存，旧材料不自动上传。
+- 本设备模式使用 IndexedDB 保存数据；账号模式通过 FastAPI 将记录保存至 MySQL，并将原文件保存至服务器私有目录。两种模式的数据相互独立，旧材料不会自动上传。
 - 支持 PDF、DOCX、TXT、Markdown、图片保存。账号模式在后端解析，本设备模式在浏览器解析；图片和扫描件尚无 OCR。
 - 原始文件与历史版本均保留；正文阅读不保证 DOCX 原版式还原。
 - 选中解析文字后可记录待确认问题；PDF 原件通过本地 canvas 预览。
@@ -36,6 +36,6 @@ npm run dev
 
 启动前端后运行 `npm run test:ui` 可检查登录错误提示、本设备数据保留、注册校验和移动布局。默认使用本机 Chrome，可通过 `OFFERGUARD_CHROME_PATH` 指定路径。该测试中的 API 响应明确模拟；实际 MySQL 接口测试位于 `backend/tests`。
 
-现有 MySQL 已配置，实际浏览器业务流程联调通过。在 `backend` 目录运行 `.venv/bin/python check_live.py` 可通过 `e2e/live-mysql.mjs` 重跑真实注册、材料版本、重登恢复、双用户隔离与删除检查，测试账号和文件会自动清理。
+配置 MySQL 并启动前后端后，可在 `backend` 目录运行 `.venv/bin/python check_live.py`，通过 `e2e/live-mysql.mjs` 验证真实注册、材料版本、重新登录后的数据恢复、双用户隔离与删除流程。测试账号和文件会自动清理。
 
 根目录 `skills/`、`knowledge/` 保存审查规范和知识规则，后端直接读取。用户在每次 AI 请求前检查脱敏输入并授权。隔离解析任务与 OCR 为后续工作；正式部署与实际验收结果见 `../deployment/README.md`。
